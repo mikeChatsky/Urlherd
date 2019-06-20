@@ -12,17 +12,10 @@
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": true,
-        "bracketSpacing": true
+        "singleQuote": true
       }
     ],
-    "no-trailing-spaces": [
-      2,
-      {
-        "skipBlankLines": true
-      }
-    ],
-    "prefer-template": 0,
+    "comma-dangle": "off",
     "import/prefer-default-export": 0,
     "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,
