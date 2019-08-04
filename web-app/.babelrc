@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-env", "@babel/typescript", "@babel/preset-react"],
+  "presets": ["@babel/react", "@babel/typescript", "@babel/env"],
   "plugins": [
     "react-hot-loader/babel",
     "@babel/proposal-class-properties",
