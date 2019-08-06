@@ -2,7 +2,7 @@
   "name": "web-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --open",
     "check-types": "tsc",
     "lint": "eslint ."
   },
@@ -14,6 +14,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "typescript": "^3.5.2"
   },
   "devDependencies": {
