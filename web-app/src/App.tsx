@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
-import Input from './components/Input/Input';
+
+import style from './App.scss';
+import LinkForm from "./links-form/LinkForm";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Input></Input>
-      <Input></Input>
+    <div className={style.app}>
+      <LinkForm onSubmit={}></LinkForm>
     </div>
   );
 };
