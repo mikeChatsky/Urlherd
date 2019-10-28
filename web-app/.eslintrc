@@ -60,6 +60,7 @@
       "warn",
       "after-props"
     ],
+    "react/prop-types": 0,
     "react/jsx-curly-spacing": [
       "warn",
       "never"
