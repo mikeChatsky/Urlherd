@@ -1,0 +1,26 @@
+{
+  "name": "api-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "nodemon -r esm ./src/index.js"
+  },
+  "keywords": [],
+  "author": "Mike Chatsky",
+  "license": "MIT",
+  "dependencies": {
+    "@aws/dynamodb-data-mapper": "^0.7.3",
+    "dotenv": "^8.2.0",
+    "fastify": "^2.11.0",
+    "fastify-autoload": "^1.2.0",
+    "fastify-dynamodb": "^1.0.7",
+    "fastify-plugin": "^1.6.0",
+    "nconf": "^0.10.0"
+  },
+  "devDependencies": {
+    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
+    "@types/nconf": "^0.10.0",
+    "nodemon": "^2.0.2"
+  }
+}

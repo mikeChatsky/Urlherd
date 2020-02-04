@@ -1,0 +1,14 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "target": "ES2016",
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "alwaysStrict": true
+  }
+}
