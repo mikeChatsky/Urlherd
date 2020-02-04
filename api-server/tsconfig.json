@@ -3,12 +3,13 @@
   "compilerOptions": {
     "baseUrl": "./",
     "moduleResolution": "Node",
-    "module": "ESNext",
+    "module": "CommonJS",
     "esModuleInterop": true,
     "target": "ES2016",
     "outDir": "./dist",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "lib": ["ESNext.AsyncIterable"]
   }
 }

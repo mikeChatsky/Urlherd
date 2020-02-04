@@ -4,7 +4,8 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "nodemon -r esm ./src/index.js"
+    "start": "npm run serve",
+    "build-ts": "tsc",
   },
   "keywords": [],
   "author": "Mike Chatsky",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "@types/nconf": "^0.10.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.5"
   }
 }
