@@ -11,6 +11,7 @@
     "dev": "npm run dev-ts & npm run dev-node",
     "dev-node": "nodemon dist/index.js",
     "dev-ts": "tsc -w",
+    "seed": "ts-node ./seed"
   },
   "keywords": [],
   "author": "Mike Chatsky",
@@ -28,7 +29,9 @@
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "@types/nconf": "^0.10.0",
     "nodemon": "^2.0.2",
+    "pino-pretty": "^3.5.0",
     "rimraf": "^3.0.1",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }
 }
