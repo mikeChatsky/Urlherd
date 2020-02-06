@@ -5,7 +5,12 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "npm run serve",
+    "serve": "node dist/index.js",
+    "build": "rimraf ./dist && npm run build-ts",
     "build-ts": "tsc",
+    "dev": "npm run dev-ts & npm run dev-node",
+    "dev-node": "nodemon dist/index.js",
+    "dev-ts": "tsc -w",
   },
   "keywords": [],
   "author": "Mike Chatsky",
@@ -23,6 +28,7 @@
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "@types/nconf": "^0.10.0",
     "nodemon": "^2.0.2",
+    "rimraf": "^3.0.1",
     "typescript": "^3.7.5"
   }
 }
