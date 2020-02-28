@@ -7,8 +7,7 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
-    filename: 'bundle.js',
-    path: commonPaths.outputPath
+    filename: 'bundle.js'
   },
   devServer: {
     port: 8081,

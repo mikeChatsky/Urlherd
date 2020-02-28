@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -45,8 +47,12 @@ module.exports = {
     modules: ['node_modules'],
     extensions: ['.js', '.ts', '.tsx', '.css', '.scss']
   },
+  output: {
+    path: commonPaths.outputPath
+  },
   plugins: [
     new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: commonPaths.templatePath
     })
