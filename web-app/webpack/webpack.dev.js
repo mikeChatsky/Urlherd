@@ -5,33 +5,16 @@ const commonPaths = require('./paths');
 
 module.exports = {
   mode: 'development',
-  devtool: 'cheap-module-source-map',
+  devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: commonPaths.outputPath
   },
-  module: {
-    rules: [
-      {
-        test: /\.s?css$/,
-        exclude: commonPaths.globalStyleFolder,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              localsConvention: 'camelCase'
-            }
-          },
-          'sass-loader'
-        ]
-      }
-    ]
-  },
   devServer: {
-    port: process.env.WEBPACK_PORT,
-    contentBase: commonPaths.outputPath
+    port: 8081,
+    contentBase: commonPaths.outputPath,
+    proxy: {'/api': 'http://localhost:8080'},
+    liveReload: false,
+    hot: true
   }
 };
