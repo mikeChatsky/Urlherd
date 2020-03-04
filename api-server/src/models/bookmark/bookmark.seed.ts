@@ -11,7 +11,7 @@ const bookmarks = [
 ];
 
 export async function seed(mapper: DataMapper): Promise<void> {
-  mapper.ensureTableExists(BookmarkModel, {
+  await mapper.ensureTableExists(BookmarkModel, {
     readCapacityUnits: 10,
     writeCapacityUnits: 10
   });

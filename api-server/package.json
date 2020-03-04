@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "npm run serve",
+    "start": "npm run dev",
     "serve": "node dist/index.js",
     "build": "rimraf ./dist && npm run build-ts",
     "build-ts": "tsc",
@@ -16,16 +16,18 @@
   "license": "MIT",
   "dependencies": {
     "@aws/dynamodb-data-mapper": "^0.7.3",
-    "dotenv": "^8.2.0",
+    "aws-sdk": "^2.611.0",
     "fastify": "^2.11.0",
     "fastify-autoload": "^1.2.0",
     "fastify-dynamodb": "^1.0.7",
     "fastify-plugin": "^1.6.0",
+    "in-production": "^1.0.1",
     "nconf": "^0.10.0"
   },
   "devDependencies": {
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "@types/nconf": "^0.10.0",
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.2",
     "pino-pretty": "^3.5.0",
     "rimraf": "^3.0.1",

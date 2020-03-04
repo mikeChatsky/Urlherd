@@ -9,8 +9,9 @@ export default function(fastify, opts: {}, next: () => void) {
 
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'services'),
-    options: Object.assign({}, opts)
+    includeTypeScript: true,
+    options: Object.assign({ prefix: '/api' }, opts)
   });
-
+  
   next();
 }

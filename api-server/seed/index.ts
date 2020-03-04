@@ -15,7 +15,6 @@ const seeder = async () => {
     const dynamo = mapper();
     await seedBookmarks(dynamo);
   } catch (err) {
-    console.log('err')
     logger.error(err);
   }
 };
