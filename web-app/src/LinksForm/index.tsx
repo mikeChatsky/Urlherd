@@ -1,15 +1,15 @@
 import React from 'react';
 import { Formik, Form, FieldArray } from 'formik';
 import { Button, Box, Boxer } from '@smooth-ui/core-sc';
-import Axios from 'axios';
 import * as yup from 'yup';
 
-import StretchingBoxer from '../components/StretchingBoxer';
 import { GoPlus } from 'react-icons/go';
 import LinkField from './LinkField';
+import { postBookmark } from '../api/bookmark';
+import TitledPage from '../components/TitledPage';
 
 const onSubmit = async (links: Array<string>): Promise<void> => {
-  const id = await Axios.post('/bookmark', links);
+  const id = await postBookmark(links);
 
   console.log(id);
 };
@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
 });
 
 const LinksForm: React.FC = () => (
-  <StretchingBoxer row justifyContent="center" alignItems="center">
+  <TitledPage title="Create a Bookmark">
     <Formik
       onSubmit={async (values): Promise<void> => {
         await onSubmit(values.links);
@@ -30,8 +30,8 @@ const LinksForm: React.FC = () => (
       validationSchema={validationSchema}
     >
       {({ values: { links }, errors }) => (
-        <Box row justifyContent="center" forwardedAs={Form}>
-          <Boxer col={3 / 6} my="10px">
+        <Box row justifyContent="center" alignItems="center" forwardedAs={Form}>
+          <Boxer col={5 / 6} my="10px">
             <FieldArray
               name="links"
               render={arrayHelpers => (
@@ -66,7 +66,7 @@ const LinksForm: React.FC = () => (
         </Box>
       )}
     </Formik>
-  </StretchingBoxer>
+  </TitledPage>
 );
 
 export default LinksForm;

@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { Box } from '@smooth-ui/core-sc';
 import { IconType } from 'react-icons';
 
-const IconLink: React.FC<{
+interface IconLinkProps {
   children: React.ReactNode;
   Icon?: IconType;
   error?: boolean;
-}> = ({ children, Icon, error }) => {
+}
+
+const IconLink: React.FC<IconLinkProps> = ({ children, Icon, error }) => {
   const MarginedIcon = styled(Icon)`
     margin: 0 10px;
     color: ${({ theme: { colors } }) => (error ? colors.error : '')};

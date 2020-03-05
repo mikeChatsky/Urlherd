@@ -20,10 +20,6 @@ export default async function(fastify: FastifyInstance, opts) {
     }
   );
 
-  fastify.get('/bookmark', (req, res) => {
-    res.code(200).send('kaki');
-  });
-
   fastify.get(
     '/bookmark/:id',
     {
@@ -47,4 +43,4 @@ export default async function(fastify: FastifyInstance, opts) {
       return reply.code(200).send(bookmark);
     }
   );
-}
+}

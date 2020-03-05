@@ -1,9 +1,11 @@
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
+import { Box } from "@smooth-ui/core-sc";
 
 import { theme } from './style/theme';
 import LinksForm from './LinksForm';
-import StretchingBoxer from './components/StretchingBoxer';
+import StretchingBox from './components/StretchingBox';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -21,9 +23,16 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <StretchingBoxer backgroundColor="background">
-        <LinksForm />
-      </StretchingBoxer>
+      <StretchingBox row backgroundColor="background" justifyContent="center">
+        <Box col={4 / 5} maxWidth="1200px" minWidth="800px">
+          <Switch>
+            <Route path="/:bookmark"></Route>
+            <Route path="/">
+              <LinksForm />
+            </Route>
+          </Switch>
+        </Box>
+      </StretchingBox>
     </ThemeProvider>
   );
 };
