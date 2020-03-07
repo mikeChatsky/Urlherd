@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Formik, Form, FieldArray } from 'formik';
 import { Button, Box, Boxer } from '@smooth-ui/core-sc';
 import * as yup from 'yup';
@@ -18,7 +18,7 @@ const validationSchema = yup.object().shape({
   links: yup.array(yup.string().url())
 });
 
-const LinksForm: React.FC = () => (
+const LinksForm: FC = () => (
   <TitledPage title="Create a Bookmark">
     <Formik
       onSubmit={async (values): Promise<void> => {

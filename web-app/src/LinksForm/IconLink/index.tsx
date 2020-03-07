@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Box } from '@smooth-ui/core-sc';
 import { IconType } from 'react-icons';
 
-interface IconLinkProps {
-  children: React.ReactNode;
+import { Container } from '../../types/Container';
+
+interface IconLinkProps extends Container {
   Icon?: IconType;
   error?: boolean;
 }
 
-const IconLink: React.FC<IconLinkProps> = ({ children, Icon, error }) => {
+const IconWrapper: FC<IconLinkProps> = ({ children, Icon, error }) => {
   const MarginedIcon = styled(Icon)`
     margin: 0 10px;
     color: ${({ theme: { colors } }) => (error ? colors.error : '')};
@@ -23,4 +24,4 @@ const IconLink: React.FC<IconLinkProps> = ({ children, Icon, error }) => {
   );
 };
 
-export default IconLink;
+export default IconWrapper;

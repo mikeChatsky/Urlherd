@@ -6,6 +6,8 @@ import { Box } from "@smooth-ui/core-sc";
 import { theme } from './style/theme';
 import LinksForm from './LinksForm';
 import StretchingBox from './components/StretchingBox';
+import { BookmarkProvider } from './BookmarkProvider';
+import Bookmark from './Bookmark';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -26,7 +28,11 @@ const App: React.FC = () => {
       <StretchingBox row backgroundColor="background" justifyContent="center">
         <Box col={4 / 5} maxWidth="1200px" minWidth="800px">
           <Switch>
-            <Route path="/:bookmark"></Route>
+            <Route path="/:bookmarkId">
+              <BookmarkProvider>
+                <Bookmark />
+              </BookmarkProvider>
+            </Route>
             <Route path="/">
               <LinksForm />
             </Route>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Field, FieldProps } from 'formik';
 import { GoLink } from 'react-icons/go';
 import { AiFillMinusCircle } from 'react-icons/ai';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Box } from '@smooth-ui/core-sc';
 
 import LinkInput from './LinkInput';
-import IconLink from '../IconLink';
+import IconWrapper from '../IconLink';
 
 const DeleteIcon = styled(AiFillMinusCircle)`
   margin: 0 10px;
@@ -25,7 +25,7 @@ const PaddedBox = styled(Box)`
   padding: 10px;
 `;
 
-const LinkField: React.FC<{
+const LinkField: FC<{
   name: string;
   onDelete: () => void;
   error?: string;
@@ -36,14 +36,14 @@ const LinkField: React.FC<{
     <PaddedBox row alignItems="center">
       <Field name={name}>
         {({ field }: { field: FieldProps<any> }) => (
-          <IconLink Icon={GoLink} {...errorProp}>
+          <IconWrapper Icon={GoLink} {...errorProp}>
             <LinkInput field={field}></LinkInput>
-          </IconLink>
+          </IconWrapper>
         )}
       </Field>
       <DeleteIcon size="20" onClick={onDelete} />
     </PaddedBox>
-  );z
+  );
 };
 
 export default LinkField;

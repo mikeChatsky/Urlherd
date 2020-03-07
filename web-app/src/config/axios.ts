@@ -5,3 +5,5 @@ const config: AxiosRequestConfig = {
 };
 
 Object.assign(axios.defaults, config);
+
+axios.interceptors.response.use(res => res.data);
