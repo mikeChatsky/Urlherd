@@ -13,8 +13,12 @@ module.exports = {
     port: 8081,
     contentBase: commonPaths.outputPath,
     historyApiFallback: true,
-    proxy: {'/api': 'http://localhost:8080'},
+    proxy: { '/api': 'http://localhost:8080' },
     liveReload: false,
     hot: true
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ]
 };

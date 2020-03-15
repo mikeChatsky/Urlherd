@@ -10,25 +10,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
       },
       {
-        test: /\.js$/,
-        use: ['source-map-loader'],
-        enforce: 'pre'
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: commonPaths.imagesFolder
-            }
-          }
-        ]
+        test: /\.svg$/,
+        loader: '@svgr/webpack'
       },
       {
         test: /\.(woff2?|ttf|eot)$/,

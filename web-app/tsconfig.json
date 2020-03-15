@@ -3,7 +3,7 @@
     "outDir": "./build/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "target": "es2020",
+    "target": "ES5",
     "jsx": "react",
     "strictNullChecks": true,
     "moduleResolution": "node",
