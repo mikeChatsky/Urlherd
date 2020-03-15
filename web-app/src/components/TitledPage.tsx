@@ -1,21 +1,23 @@
-import React from 'react';
-import { Box, Text } from '@smooth-ui/core-sc';
-import StretchingBox from './StretchingBox';
+import React, { FC, ReactNode } from 'react';
+import { Heading } from "@kiwicom/orbit-components";
+import StretchingGrid from './StretchingGrid';
+import GridCell from './GridCell';
+import styled from 'styled-components';
 
 interface TitledPageProps {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const TitledPage: React.FC<TitledPageProps> = ({ title, children }) => (
-  <StretchingBox col={1} display="flex" flexDirection="column">
-    <Box marginTop="200px">
-      <Text variant="h1">{title}</Text>
-    </Box>
-    <Box flex={1} marginTop="5%">
+const TitledPage: FC<TitledPageProps> = ({ title, children }) => (
+  <StretchingGrid rows="1fr 3fr" rowGap="5%">
+    <GridCell rowLine="1" alignSelf="end">
+      <Heading type="display">{title}</Heading>
+    </GridCell>
+    <GridCell rowLine="2">
       {children}
-    </Box>
-  </StretchingBox>
+    </GridCell>
+  </StretchingGrid>
 );
 
 export default TitledPage;

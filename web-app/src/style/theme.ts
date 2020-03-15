@@ -1,11 +1,21 @@
-import { DefaultTheme } from 'styled-components';
+import getTokens from '@kiwicom/orbit-components/lib/getTokens';
 
-export const theme: DefaultTheme = {
-  colorMode: 'light',
-  colors: {
-    primary: '#9b31e3',
-    secondary: '#dadada',
-    background: '#f7f7f7',
-    error: '#e85757'
+const theme = getTokens({
+  palette: {
+    product: {
+      light: '#fdf0ff',
+      lightHover: '#fbdfff',
+      lightActive: '#f9ceff',
+      normal: '#874591',
+      normalHover: '#63336a',
+      normalActive: '#3d0046',
+      dark: '#110013'
+    }
+  },
+  base:{
+    fontFamily:
+      '-apple-system, ".SFNSText-Regular", "San Francisco", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif',
   }
-};
+});
+
+export default { orbit: theme };
