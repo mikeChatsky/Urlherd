@@ -11,7 +11,7 @@ import Bookmark from './Bookmark';
 import CreateBookmark from './CreateBookmark';
 import GridCell from '../components/GridCell';
 
-import Logo from '../assets/batch-url.svg';
+import { ReactComponent as Logo } from '../logo.svg';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,17 +31,17 @@ const App: FC = () => {
     <ThemeProvider theme={theme}>
       <StretchingGrid columns="1fr 80% 1fr" rows="100px 1fr">
         <GridCell columnLine={2}  alignSelf="center">
-          <Logo height="50px" />
+          <Logo height="40px" title="batch url"/>
         </GridCell>
         <GridCell columnLine={2} rowLine={2}>
           <Router>
             <GlobalStyle />
             <Switch>
-              {/* <Route path="/:bookmarkId">
+              <Route path="/:bookmarkId">
               <BookmarkProvider>
                 <Bookmark />
               </BookmarkProvider>
-            </Route> */}
+            </Route>
               <Route path="/">
                 <CreateBookmark />
               </Route>
