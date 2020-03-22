@@ -1,34 +1,17 @@
-import React, { FC } from 'react';
-import { GoLink } from 'react-icons/go';
-import { AiFillMinusCircle } from 'react-icons/ai';
-import styled from 'styled-components';
-import InputField from '@kiwicom/orbit-components/lib/InputField';
-
-import IconWrapper from '../../../../components/IconWrapper';
-
-const DeleteIcon = styled(AiFillMinusCircle)`
-  margin: 0 10px;
-  color: ${({
-    theme: {
-      colors: { error }
-    }
-  }) => error};
-  opacity: 0.7;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const PaddedBox = styled.div`
-  padding: 0 10px;
-`;
+import React, { FC } from "react";
+import { InputField } from "@kiwicom/orbit-components";
+import { ButtonLink } from "@kiwicom/orbit-components";
+import {
+  Link as LinkIcon,
+  MinusCircle
+} from "@kiwicom/orbit-components/lib/icons";
 
 interface LinkFieldProps {
   name: string;
   register: (ref: Element | null) => void;
   onRemove: () => void;
   isRemovable?: boolean;
-  error?: any;
+  error?: string;
 }
 
 const LinkField: FC<LinkFieldProps> = ({
@@ -38,19 +21,29 @@ const LinkField: FC<LinkFieldProps> = ({
   register,
   error
 }) => (
-  <>
-    <PaddedBox>
-      <IconWrapper Icon={GoLink} error={!!error} height="50px">
-        <InputField
-          type="text"
-          name={name}
-          placeholder="http://www.your.link.here"
-          ref={register}
+  <InputField
+    type="text"
+    name={name}
+    placeholder="http://www.your.link.here"
+    ref={register}
+    error={!!error && <span>{error}</span>}
+    spaceAfter="largest"
+    prefix={
+      <LinkIcon size="small" color={!!error ? "critical" : "secondary"} />
+    }
+    suffix={
+      isRemovable && (
+        <ButtonLink
+          iconLeft={<MinusCircle ariaHidden />}
+          onClick={onRemove}
+          title="remove link"
+          color="critical"
+          type="secondary"
+          transparent
         />
-      </IconWrapper>
-      {isRemovable && <DeleteIcon size="20" onClick={onRemove} />}
-    </PaddedBox>
-  </>
+      )
+    }
+  />
 );
 
 export default LinkField;

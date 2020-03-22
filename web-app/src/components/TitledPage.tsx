@@ -2,7 +2,6 @@ import React, { FC, ReactNode } from 'react';
 import { Heading } from "@kiwicom/orbit-components";
 import StretchingGrid from './StretchingGrid';
 import GridCell from './GridCell';
-import styled from 'styled-components';
 
 interface TitledPageProps {
   title: string;
