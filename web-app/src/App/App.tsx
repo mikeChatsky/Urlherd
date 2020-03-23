@@ -18,9 +18,13 @@ const MainGrid = styled(StretchingGrid)`
   background: ${({ theme: { orbit } }) => orbit.backgroundBody};
 `;
 
+const Content = styled(GridCell)`
+  max-width: 600px;
+`;
+
 const App: FC = () => (
   <ThemeProvider theme={theme}>
-    <MainGrid columns="1fr 80% 1fr" rows="100px 1fr">
+    <MainGrid columns="1fr minmax(600px, 80%) 1fr" rows="100px 1fr">
       <GridCell columnLine={2} alignSelf="center">
         <Logo height="40px" title="batch url" />
       </GridCell>

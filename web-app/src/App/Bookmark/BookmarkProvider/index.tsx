@@ -16,13 +16,11 @@ const BookmarkProvider: FC<Container> = ({ children }) => {
   const { bookmarkId } = useParams();
   const { getBookmark, error, bookmark } = useBookmark();
 
-  // if (!bookmarkId) {
-  //   // TODO: setError
-  //   return <span>invalid bookmark</span>;
-  // }
-
   useEffect(() => {
-    getBookmark(bookmarkId);
+    // TODO: setError
+    if (bookmarkId) {
+      getBookmark(bookmarkId);
+    }
   }, []);
 
   return (

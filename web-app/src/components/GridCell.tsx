@@ -14,7 +14,8 @@ const GridCell: FC<GridCellProps> = ({
   columnLine,
   alignSelf,
   justifySelf,
-  children
+  children,
+  className
 }) => {
   const CellDiv = styled.div`
     ${rowLine && `grid-row-start:${rowLine};`}
@@ -23,7 +24,7 @@ const GridCell: FC<GridCellProps> = ({
     ${justifySelf && `justify-self:${justifySelf};`}
   `;
 
-  return <CellDiv>{children}</CellDiv>;
+  return <CellDiv className={className}>{children}</CellDiv>;
 };
 
 export default GridCell;

@@ -1,4 +1,6 @@
-import React, { useContext, FC, useEffect } from 'react';
+import React, { useContext, FC, useEffect, Key } from 'react';
+import { Stack } from '@kiwicom/orbit-components';
+
 import { bookmarkContext } from './BookmarkProvider';
 import TitledPage from '../../components/TitledPage';
 import Link from './Link';
@@ -14,13 +16,11 @@ const Bookmark: FC = () => {
 
   return (
     <TitledPage title="Bookmark">
-      <div>
-        {bookmark?.links?.map((link, index) => (
-          <div key={index} >
-            <Link link={link} />
-          </div>
+      <Stack>
+        {bookmark?.links?.map((link: string, index: Key) => (
+          <Link key={index} link={link} />
         ))}
-      </div>
+      </Stack>
     </TitledPage>
   );
 };
