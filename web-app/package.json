@@ -47,5 +47,6 @@
     "@types/styled-components": "^5.0.1",
     "@types/yup": "^0.26.33",
     "prettier": "^2.0.1"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
