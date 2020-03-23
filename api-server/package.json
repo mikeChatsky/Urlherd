@@ -9,6 +9,7 @@
     "build": "rimraf ./dist && npm run build-ts",
     "build-ts": "tsc",
     "dev": "nodemon ./src/index.ts",
+    "serve-debug": "nodemon --inspect ./src/index.ts",
     "seed": "ts-node ./seed"
   },
   "keywords": [],
@@ -22,6 +23,8 @@
     "fastify-dynamodb": "^1.0.7",
     "fastify-plugin": "^1.6.0",
     "in-production": "^1.0.1",
+    "nanoid": "^2.1.11",
+    "nanoid-dictionary": "^3.0.0",
     "nconf": "^0.10.0"
   },
   "devDependencies": {
@@ -30,6 +33,7 @@
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.2",
     "pino-pretty": "^3.5.0",
+    "prettier": "^2.0.1",
     "rimraf": "^3.0.1",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
