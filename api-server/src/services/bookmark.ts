@@ -1,25 +1,24 @@
 import BookmarkModel from '../models/bookmark/bookmark.model';
-import { FastifyInstance } from 'src/types/fastify';
+import { PluggedFastifyInstance } from 'src/types/fastify';
 import { ID_LENGTH } from '../models/Id';
-import { ItemNotFoundException } from '@aws/dynamodb-data-mapper';
 
-export default async function (fastify: FastifyInstance) {
+export default async function (fastify: PluggedFastifyInstance) {
   fastify.post(
     '/bookmark',
     {
       schema: {
         body: {
           type: 'array',
-          items: { type: 'string', pattern: '\\w+:(\\/?\\/?)[^s]+' },
-        },
-      },
+          items: { type: 'string', pattern: '\\w+:(\\/?\\/?)[^s]+' }
+        }
+      }
     },
-    async (request, reply) => {
-      const newBookmark = Object.assign(new BookmarkModel(), request.body);
-      const { id } = await fastify.mapper.put(newBookmark);
-
-      return reply.code(201).send(id);
-    }
+    async (request, reply) =>
+      reply.code(201).send(
+        await fastify.store.put(BookmarkModel, {
+          links: request.body
+        })
+      )
   );
 
   fastify.get(
@@ -32,26 +31,15 @@ export default async function (fastify: FastifyInstance) {
             id: {
               type: 'string',
               maxLength: ID_LENGTH,
-              minLength: ID_LENGTH,
-            },
-          },
-        },
-      },
-    },
-    async (request, reply) => {
-      try {
-        const bookmark = await fastify.mapper.get(
-          Object.assign(new BookmarkModel(), { id: request.params.id })
-        );
-
-        return reply.code(200).send(bookmark);
-      } catch (err) {
-        if (err.name === "ItemNotFoundException") {
-          return reply.code(404).send('Bookmark not found');
+              minLength: ID_LENGTH
+            }
+          }
         }
-
-        throw err;
       }
-    }
+    },
+    async (request, reply) =>
+      reply
+        .code(200)
+        .send(await fastify.store.getById(BookmarkModel, request.params.id))
   );
 }

@@ -6,7 +6,7 @@ import app from './app';
 
 dotenvConfig();
 
-const port = Number(process.env.PORT) || 80;
+const port: number = Number(process.env.PORT) || 80;
 
 let config: fastify.ServerOptions = { logger: true };
 
