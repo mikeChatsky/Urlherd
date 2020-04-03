@@ -1,0 +1,10 @@
+{
+  "name": "Batch Url",
+  "description": "",
+  "version": "1.0.0",
+  "browser_action": {
+    "default_title": "Batch Url",
+    "default_popup": "index.html"
+  },
+  "manifest_version": 2
+}
