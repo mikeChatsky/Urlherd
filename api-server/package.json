@@ -2,12 +2,10 @@
   "name": "api-server",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "./build/index.js",
   "scripts": {
     "start": "npm run dev",
-    "serve": "node dist/index.js",
-    "build": "rimraf ./dist && npm run build-ts",
-    "build-ts": "tsc",
+    "build": "rimraf ./build && tsc --extendedDiagnostics",
     "dev": "nodemon ./src/index.ts",
     "serve-debug": "nodemon --inspect ./src/index.ts",
     "seed": "ts-node ./seed"
@@ -17,18 +15,19 @@
   "license": "MIT",
   "dependencies": {
     "@aws/dynamodb-data-mapper": "^0.7.3",
+    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
+    "@elastic/elasticsearch": "^7.6.1",
     "aws-sdk": "^2.611.0",
-    "fastify": "^2.11.0",
+    "fastify": "^2.13.0",
     "fastify-autoload": "^1.2.0",
     "fastify-dynamodb": "^1.0.7",
     "fastify-plugin": "^1.6.0",
-    "in-production": "^1.0.1",
     "nanoid": "^2.1.11",
     "nanoid-dictionary": "^3.0.0",
     "nconf": "^0.10.0"
   },
   "devDependencies": {
-    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
+    "@types/nanoid": "^2.1.0",
     "@types/nconf": "^0.10.0",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.2",

@@ -1,16 +1,12 @@
-import { config as dotenvConfig } from 'dotenv';
 import fastify from 'fastify';
-import { inProduction } from 'in-production';
 
 import app from './app';
 
-dotenvConfig();
-
-const port: number = Number(process.env.PORT) || 80;
-
 let config: fastify.ServerOptions = { logger: true };
 
-if (!inProduction) {
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+
   config = {
     ...config,
     logger: {
@@ -23,13 +19,16 @@ if (!inProduction) {
   };
 }
 
+const port: number = Number(process.env.PORT) || 80;
+const host: string = process.env.HOST || 'localhost';
+
 const server = fastify(config);
 
 server.register(app);
 
 const start = async () => {
   try {
-    await server.listen(port);
+    await server.listen(port, host);
     server.log.info('env : ' + process.env.NODE_ENV);
   } catch (err) {
     console.log(err);

@@ -6,7 +6,7 @@
     "module": "CommonJS",
     "esModuleInterop": true,
     "target": "ES2019",
-    "outDir": "./dist",
+    "outDir": "./build",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "alwaysStrict": true,
