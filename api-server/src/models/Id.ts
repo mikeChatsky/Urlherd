@@ -1,6 +1,6 @@
-import generate from 'nanoid/generate';
+import { customAlphabet } from 'nanoid';
 import { nolookalikes } from 'nanoid-dictionary';
 
 export const ID_LENGTH: number = 10;
 
-export default () => generate(nolookalikes, ID_LENGTH);
+export default customAlphabet(nolookalikes, ID_LENGTH);
