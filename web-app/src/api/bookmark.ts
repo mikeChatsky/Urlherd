@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { postBookmark as post, getBookmark as get } from './bookmark';
 import Axios, { AxiosError } from 'axios';
 
 enum Phase {
@@ -11,9 +10,9 @@ enum Phase {
 }
 
 const baseUrl = '/bookmark';
-const getBookmark = async (id: string) => await Axios.get(`${baseUrl}/${id}`);
+const get = async (id: string) => await Axios.get(`${baseUrl}/${id}`);
 
-const postBookmark = async (links: Array<string>) =>
+const post = async (links: Array<string>) =>
   await Axios.post(baseUrl, links);
 
 const useBookmark = () => {
@@ -52,4 +51,4 @@ const useBookmark = () => {
   return { submitBookmark, getBookmark, error, phase, bookmark };
 };
 
-export { useBookmark, getBookmark, postBookmark };
+export { useBookmark };
