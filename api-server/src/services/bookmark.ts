@@ -37,9 +37,10 @@ export default async function (fastify: PluggedFastifyInstance) {
         }
       }
     },
-    async (request, reply) =>
-      reply
+    async ({ params: { id } }, reply) => {
+      return reply
         .code(200)
-        .send(await fastify.store.getById(BookmarkModel, request.params.id))
+        .send(await fastify.store.getById(BookmarkModel, id));
+    }
   );
 }
