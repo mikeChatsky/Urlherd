@@ -1,10 +1,12 @@
 import fp from 'fastify-plugin';
 import elastic from '../config/elasticsearch-client';
+import { ELASTIC_PLUGIN } from '.';
 
-export const ELASTIC_PLUGIN = 'elastic';
+export = fp(
+  (fastify, opts, next) => {
+    fastify.decorate(ELASTIC_PLUGIN, elastic);
 
-export default fp((fastify, opts, next) => {
-  fastify.decorate(ELASTIC_PLUGIN, elastic);
-
-  next();
-});
+    next();
+  },
+  { name: ELASTIC_PLUGIN }
+);
