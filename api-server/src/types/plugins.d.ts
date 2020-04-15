@@ -5,7 +5,3 @@ declare interface Provider {
   getById<T>(model: Model<T>, id: string): Promise<T>;
   put<T>(model: Model<T>, content: any): Promise<string>;
 }
-
-declare interface analyticsService {
-  recordRequest: (resourceId: string, request: FastifyRequest) => void;
-}

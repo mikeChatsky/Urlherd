@@ -1,19 +1,12 @@
 import fp from 'fastify-plugin';
-import { FastifyRequest } from 'fastify';
 
-import { PluggedFastifyInstance } from '../types/fastify';
 import { ANALYTICS_PLUGIN, ELASTIC_PLUGIN } from '.';
-import { analyticsService } from '../types/plugins';
+import { PluggedFastifyInstance } from '../types/fastify';
+import Analytics from '../analytics';
 
 export = fp(
-  (fastify: PluggedFastifyInstance, opts, next) => {
-    const analytics: analyticsService = {
-      recordRequest: (resourceId, request) => {
-        fastify.elastic.index({ index: resourceId, body: request });
-      }
-    };
-
-    fastify.decorate(ANALYTICS_PLUGIN, analytics);
+  (fastify: PluggedFastifyInstance, _opts, next) => {
+    fastify.decorate(ANALYTICS_PLUGIN, new Analytics(fastify.log));
 
     next();
   },

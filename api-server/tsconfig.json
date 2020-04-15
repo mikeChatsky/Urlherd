@@ -1,7 +1,6 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "baseUrl": "./",
     "moduleResolution": "Node",
     "module": "CommonJS",
     "esModuleInterop": true,
