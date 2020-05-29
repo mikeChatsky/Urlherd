@@ -1,18 +1,19 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
-import { ThemeProvider } from "@kiwicom/orbit-components";
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { FC, Suspense, lazy } from 'react';
+import styled from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from '@kiwicom/orbit-components';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import theme from "../style/theme";
-import StretchingGrid from "../components/StretchingGrid";
-import { BookmarkProvider } from "./Bookmark/BookmarkProvider";
-import Bookmark from "./Bookmark";
-import CreateBookmark from "./CreateBookmark";
-import GridCell from "../components/GridCell";
-import GlobalStyle from "../style/GlobalStyle";
+import theme from '../style/theme';
+import StretchingGrid from '../components/StretchingGrid';
+import { BookmarkProvider } from './Bookmark/BookmarkProvider';
+import Bookmark from './Bookmark';
+import GridCell from '../components/GridCell';
+import GlobalStyle from '../style/GlobalStyle';
 
-import { ReactComponent as Logo } from "../logo.svg";
+import { ReactComponent as Logo } from '../logo.svg';
+
+const CreateBookmark = lazy(() => import('./CreateBookmark'));
 
 const MainGrid = styled(StretchingGrid)`
   background: ${({ theme: { orbit } }) => orbit.backgroundBody};
@@ -31,16 +32,18 @@ const App: FC = () => (
       <GridCell columnLine={2} rowLine={2}>
         <Router>
           <GlobalStyle />
-          <Switch>
-            <Route path="/:bookmarkId">
-              <BookmarkProvider>
-                <Bookmark />
-              </BookmarkProvider>
-            </Route>
-            <Route path="/">
-              <CreateBookmark />
-            </Route>
-          </Switch>
+          <Suspense fallback={<span>Loading...</span>}>
+            <Switch>
+              <Route path="/:bookmarkId">
+                <BookmarkProvider>
+                  <Bookmark />
+                </BookmarkProvider>
+              </Route>
+              <Route path="/">
+                <CreateBookmark />
+              </Route>
+            </Switch>
+          </Suspense>
         </Router>
       </GridCell>
     </MainGrid>
